@@ -1,10 +1,10 @@
-import Joi from "joi"
+import Joi from "Joi"
 
 import { useMemo, useState } from "react"
 
 export const Schema = Joi
 
-export const useValidator = ({ initialData, schema, joi = Schema }) => {
+export const useValidator = ({ initialData, schema }) => {
     const [$data, set$data] = useState(() => Object.assign({}, initialData))
 
     const [$dirty, set$dirty] = useState(false)
@@ -16,8 +16,7 @@ export const useValidator = ({ initialData, schema, joi = Schema }) => {
             const originalValue = initialData[field]
             const currentValue = $data[field]
 
-            const isMatch = joi
-                .any()
+            const isMatch = Joi.any()
                 .valid(originalValue)
                 .validate(currentValue).error
                 ? false
@@ -32,7 +31,7 @@ export const useValidator = ({ initialData, schema, joi = Schema }) => {
         }
 
         return states
-    }, [$data, $dirty, initialData, joi])
+    }, [$data, $dirty, initialData, Joi])
 
     const $source_errors = useMemo(() => {
         const results = {}
