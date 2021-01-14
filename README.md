@@ -1,3 +1,21 @@
+## About
+
+State-based validation hook. Unlike other component/form based validations, `react-joi` allows you to use native HTML elements & requires no `<form /> ` element to do your `submit` validation.
+
+The core validator uses [Joi](https://joi.dev/) as in it's name.
+
+## Installation
+
+```
+yarn add react-joi
+
+// or
+
+npm -i react-joi
+```
+
+
+
 ## Usage
 
 ```jsx
