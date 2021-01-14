@@ -6,8 +6,9 @@ The core validator uses [Joi](https://joi.dev/) as in it's name.
 
 ## Installation
 
-install package via [npm](https://www.npmjs.com/package/react-joi)
-install [joi](https://joi.dev/)
+install package via [npm](https://www.npmjs.com/package/react-joi).
+
+install [joi](https://joi.dev/).
 
 ```
 yarn add react-joi
