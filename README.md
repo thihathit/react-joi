@@ -6,6 +6,9 @@ The core validator uses [Joi](https://joi.dev/) as in it's name.
 
 ## Installation
 
+install package via [npm](https://www.npmjs.com/package/react-joi)
+install [joi](https://joi.dev/)
+
 ```
 yarn add react-joi
 
@@ -19,15 +22,18 @@ npm -i react-joi
 ## Usage
 
 ```jsx
+import Joi from "joi"
+import { useValidator } from "react-joi"
+
 function App() {
     const { state, setData, validate } = useValidator({
         initialData: {
             name: null,
             email: null,
         },
-        schema: Schema.object({
-            name: Schema.string().required(),
-            email: Schema.string()
+        schema: Joi.object({
+            name: Joi.string().required(),
+            email: Joi.string()
                 .email({
                     tlds: { allow: false },
                 })
