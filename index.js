@@ -2,8 +2,6 @@ import Joi from "joi"
 
 import { useMemo, useState } from "react"
 
-export const Schema = Joi
-
 export const useValidator = ({ initialData, schema }) => {
     const [$data, set$data] = useState(() => Object.assign({}, initialData))
 
