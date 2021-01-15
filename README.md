@@ -43,6 +43,8 @@ function App() {
     })
 
     const updateName = (e) => {
+        e.persist();
+        
         setData((old) => ({
             ...old,
             name: e.target.value,
@@ -50,6 +52,8 @@ function App() {
     }
 
     const updateEmail = (e) => {
+        e.persist();
+        
         setData((old) => ({
             ...old,
             email: e.target.value,
