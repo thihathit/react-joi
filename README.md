@@ -98,3 +98,20 @@ function App() {
 ```
 
 ![](https://i.ibb.co/93wndgy/image.png)
+
+
+
+## State Documentation
+
+| name                  | description                                                  |
+| --------------------- | ------------------------------------------------------------ |
+| `$data`               | Values of the instance                                       |
+| `$dirty`              | Dirty state of the instance                                  |
+| `$data_state`         | State of the values: `$dirty` means if the initial data is touched or not |
+| `$source_errors`      | Raw errors of the instance. This re-validates every time `$data` is changed regardless of `$dirty` is `true` or `false` |
+| `$errors`             | `Recommended` way of retrieving errors of each fields. Each fields respects global `$dirty` state of the instance and `$data_state`'s `$dirty` states. |
+| `$all_errors`         | List of all errors respecting `$dirty` states of their own and global state. |
+| `$all_source_errors`  | List of all errors not respecting `$dirty` states of their own and global state. |
+| `$invalid`            | Validity of the instance respecting global `$dirty`.         |
+| `$auto_invalid`       | Validity of the instance not respecting global `$dirty`. `Recommended` use case for disabled submit button |
+| `$validation_success` | Positive validity of the instance respecting global `$dirty`. |
