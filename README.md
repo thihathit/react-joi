@@ -43,6 +43,7 @@ function App() {
     })
 
     const updateName = (e) => {
+		// react < v17
         e.persist();
         
         setData((old) => ({
@@ -52,6 +53,7 @@ function App() {
     }
 
     const updateEmail = (e) => {
+		// react < v17
         e.persist();
         
         setData((old) => ({
