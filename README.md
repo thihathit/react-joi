@@ -38,15 +38,15 @@ function App() {
                 })
                 .required(),
         }),
-	    explicitCheck: {
-        	name: false,
-            email: false
-        }
+        explicitCheck: {
+            name: false,
+            email: false,
+        },
     })
 
     const updateName = (e) => {
-	// react < v17
-        e.persist();
+        // react < v17
+        e.persist()
 
         setData((old) => ({
             ...old,
@@ -55,8 +55,8 @@ function App() {
     }
 
     const updateEmail = (e) => {
-	// react < v17
-        e.persist();
+        // react < v17
+        e.persist()
 
         setData((old) => ({
             ...old,
@@ -69,7 +69,11 @@ function App() {
             <div>
                 <label>Name</label>
                 <br />
-                <input type="text" onChange={updateName} onBlur={() => setExplicitField('name', true)} />
+                <input
+                    type="text"
+                    onChange={updateName}
+                    onBlur={() => setExplicitField("name", true)}
+                />
                 <br />
                 {state.$errors.name.map((data) => data.$message).join(",")}
 
@@ -78,7 +82,11 @@ function App() {
 
                 <label>Email</label>
                 <br />
-                <input type="text" onChange={updateEmail} onBlur={() => setExplicitField('email', true) />
+                <input
+                    type="text"
+                    onChange={updateEmail}
+                    onBlur={() => setExplicitField("email", true)}
+                />
                 <br />
                 {state.$errors.email.map((data) => data.$message).join(",")}
 
