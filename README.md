@@ -18,8 +18,6 @@ yarn add react-joi
 npm -i react-joi
 ```
 
-
-
 ## Usage
 
 ```jsx
@@ -47,9 +45,9 @@ function App() {
     })
 
     const updateName = (e) => {
-		// react < v17
+	// react < v17
         e.persist();
-        
+
         setData((old) => ({
             ...old,
             name: e.target.value,
@@ -57,9 +55,9 @@ function App() {
     }
 
     const updateEmail = (e) => {
-		// react < v17
+	// react < v17
         e.persist();
-        
+
         setData((old) => ({
             ...old,
             email: e.target.value,
@@ -105,27 +103,25 @@ function App() {
 
 ![](https://i.ibb.co/93wndgy/image.png)
 
-Note that the explicitCheck object is optional, and is only needed if it is desired to suppress error messages during
+Note that the **explicitCheck** object is **optional**, and is only needed if it is desired to suppress error messages during
 input until the onBlur method has fired at least once. If this behavior is not required/desired, then omit it as shown
 in the second example.
 
 ## State Documentation
 
-| name                  | description                                                  |
-| --------------------- | ------------------------------------------------------------ |
-| `$data`               | Values of the instance                                       |
-| `$dirty`              | Dirty state of the instance                                  |
-| `$explicitfields`     | Settings of any fields that have been explicitly set         |
-| `$data_state`         | State of the values: `$dirty` means if the initial data is touched or not |
-| `$source_errors`      | Raw errors of the instance. This re-validates every time `$data` is changed regardless of `$dirty` is `true` or `false` |
+| name                  | description                                                                                                                                            |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$data`               | Values of the instance                                                                                                                                 |
+| `$dirty`              | Dirty state of the instance                                                                                                                            |
+| `$explicitfields`     | Settings of any fields that have been explicitly set                                                                                                   |
+| `$data_state`         | State of the values:`$dirty` means if the initial data is touched or not                                                                               |
+| `$source_errors`      | Raw errors of the instance. This re-validates every time `$data` is changed regardless of `$dirty` is `true` or `false`                                |
 | `$errors`             | `Recommended` way of retrieving errors of each fields. Each fields respects global `$dirty` state of the instance and `$data_state`'s `$dirty` states. |
-| `$all_errors`         | List of all errors respecting `$dirty` states of their own and global state. |
-| `$all_source_errors`  | List of all errors not respecting `$dirty` states of their own and global state. |
-| `$invalid`            | Validity of the instance respecting global `$dirty`.         |
-| `$auto_invalid`       | Validity of the instance not respecting global `$dirty`. `Recommended` use case for disabled submit button |
-| `$validation_success` | Positive validity of the instance respecting global `$dirty`. |
-
-
+| `$all_errors`         | List of all errors respecting `$dirty` states of their own and global state.                                                                           |
+| `$all_source_errors`  | List of all errors not respecting `$dirty` states of their own and global state.                                                                       |
+| `$invalid`            | Validity of the instance respecting global `$dirty`.                                                                                                   |
+| `$auto_invalid`       | Validity of the instance not respecting global `$dirty`. `Recommended` use case for disabled submit button                                             |
+| `$validation_success` | Positive validity of the instance respecting global `$dirty`.                                                                                          |
 
 ### Combo with [react-use-models](https://www.npmjs.com/package/react-use-models).
 
