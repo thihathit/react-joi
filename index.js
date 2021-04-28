@@ -7,10 +7,12 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
 
     const [$dirty, set$dirty] = useState(false)
 
-    const [$explicitfields, set$explicitfields] = useState(() => Object.assign({}, explicitCheck))
+    const [$explict_fields, set$explict_fields] = useState(() =>
+        Object.assign({}, explicitCheck)
+    )
 
-    const set$explicitfield = (field, value) => {
-        set$explicitfields({...$explicitfields, [field]: !!value})
+    const set$explict_field = (field, value) => {
+        set$explict_fields((old) => ({ ...old, [field]: value }))
     }
 
     const $data_state = useMemo(() => {
@@ -19,8 +21,13 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
         for (const field in $data) {
             let fieldState = {}
 
-            if (field in $explicitfields && !$explicitfields[field])
+            // Dirty state check
+            // Only global $dirty when explicitly suppressed
+            if (field in $explict_fields && !$explict_fields[field]) {
                 fieldState["$dirty"] = $dirty
+            }
+            // Dirty state check
+            // both global $dirty & value change
             else {
                 const originalValue = initialData[field]
                 const currentValue = $data[field]
@@ -31,7 +38,6 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
                     ? false
                     : true
 
-                // Dirty state
                 fieldState["$dirty"] = $dirty || !isMatch
             }
 
@@ -39,7 +45,7 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
         }
 
         return states
-    }, [$data, $dirty, $explicitfields, initialData, Joi])
+    }, [$data, $dirty, $explict_fields, initialData, Joi])
 
     const $source_errors = useMemo(() => {
         const results = {}
@@ -117,7 +123,7 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
         () => ({
             $data,
             $dirty,
-            $explicitfields,
+            $explict_fields,
             $data_state,
             $source_errors,
             $errors,
@@ -130,7 +136,7 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
         [
             $data,
             $dirty,
-            $explicitfields,
+            $explict_fields,
             $data_state,
             $source_errors,
             $errors,
@@ -149,7 +155,7 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
     return {
         state,
         setData: set$data,
-        setExplicitField: set$explicitfield,
+        setExplicitField: set$explict_field,
         validate,
     }
 }
