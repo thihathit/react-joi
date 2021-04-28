@@ -1,7 +1,7 @@
 import React from "react"
 import Joi from "joi"
 
-import useValidator from "@lib/index"
+import useValidator from "react-joi"
 
 export const Demo1 = () => {
     const { state, setData, setExplicitField, validate } = useValidator({

@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import useModels from "react-use-models"
 import Joi from "joi"
 
-import useValidator from "@lib/index"
+import useValidator from "react-joi"
 
 export const Demo2 = () => {
     const { models, register } = useModels({
