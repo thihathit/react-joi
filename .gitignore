@@ -7,7 +7,6 @@ node_modules
 .env*
 
 /coverage
-/dev
 
 # Ignore npm/yarn debug log
 npm-debug.log
