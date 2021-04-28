@@ -1,6 +1,6 @@
 {
     "name": "react-joi",
-    "version": "0.0.6",
+    "version": "0.0.5",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -16,14 +16,14 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/llesslie/react-joi.git"
+        "url": "git+https://github.com/thihathit/react-joi.git"
     },
     "author": "Thiha Thit",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/llesslie/react-joi/issues"
+        "url": "https://github.com/thihathit/react-joi/issues"
     },
-    "homepage": "https://github.com/llesslie/react-joi#readme",
+    "homepage": "https://github.com/thihathit/react-joi#readme",
     "peerDependencies": {
         "joi": "^17.3.0",
         "react": "^17.0.1"
