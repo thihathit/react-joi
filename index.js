@@ -53,13 +53,15 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
         const fields = Array.from(schema._ids._byKey.keys())
         fields.map((field) => {
             const messages = []
-            const error = schema.extract(field).validate($data[field]).error
+            const errors = schema.extract(field).validate($data[field], {abortEarly: false}).error;
 
-            if (error) {
-                messages.push({
-                    $property: field,
-                    $message: error.message,
-                })
+            if(errors && errors.details) {
+                errors.details.map(err => {
+                    messages.push({
+                        $property: field,
+                        $message: err.message,
+                    })
+                });
             }
 
             results[field] = messages
