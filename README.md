@@ -42,6 +42,9 @@ function App() {
             name: false,
             email: false,
         },
+        validationOptions: {
+            abortEarly: true
+        },
     })
 
     const updateName = (e) => {
