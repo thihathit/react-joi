@@ -2,7 +2,12 @@ import Joi from "joi"
 
 import { useMemo, useState } from "react"
 
-export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
+export const useValidator = ({
+    initialData,
+    schema,
+    explicitCheck = {},
+    validationOptions = {},
+}) => {
     const [$data, set$data] = useState(() => Object.assign({}, initialData))
 
     const [$dirty, set$dirty] = useState(false)
@@ -53,15 +58,17 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
         const fields = Array.from(schema._ids._byKey.keys())
         fields.map((field) => {
             const messages = []
-            const errors = schema.extract(field).validate($data[field], {abortEarly: false}).error;
+            const errors = schema
+                .extract(field)
+                .validate($data[field], validationOptions).error
 
-            if(errors && errors.details) {
-                errors.details.map(err => {
+            if (errors?.details) {
+                errors.details.map((err) => {
                     messages.push({
                         $property: field,
                         $message: err.message,
                     })
-                });
+                })
             }
 
             results[field] = messages
@@ -112,14 +119,15 @@ export const useValidator = ({ initialData, schema, explicitCheck = {} }) => {
         return $dirty && $all_errors.length !== 0
     }, [$dirty, $all_errors])
 
-    const $auto_invalid = useMemo(() => $all_source_errors.length !== 0, [
-        $all_source_errors,
-    ])
+    const $auto_invalid = useMemo(
+        () => $all_source_errors.length !== 0,
+        [$all_source_errors]
+    )
 
-    const $validation_success = useMemo(() => $dirty && !$invalid, [
-        $dirty,
-        $invalid,
-    ])
+    const $validation_success = useMemo(
+        () => $dirty && !$invalid,
+        [$dirty, $invalid]
+    )
 
     const state = useMemo(
         () => ({
