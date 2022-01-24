@@ -15,7 +15,7 @@ yarn add react-joi
 
 // or
 
-npm -i react-joi
+npm i react-joi
 ```
 
 ## Usage
