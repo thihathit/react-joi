@@ -41,6 +41,7 @@ export type TypeUseValidatorState<FieldTypes> = {
     $invalid: boolean
     $auto_invalid: boolean
     $validation_success: boolean
+    $validated: boolean
 }
 
 export interface TypeUseValidator<FieldTypes> {

@@ -1,6 +1,6 @@
 import Joi from "joi"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 export const useValidator = ({
     initialData,
@@ -10,7 +10,10 @@ export const useValidator = ({
 }) => {
     const [$data, set$data] = useState(() => Object.assign({}, initialData))
 
-    const [$dirty, set$dirty] = useState(false)
+    const [$meta, set$meta] = useState({
+        $dirty: false,
+        $submitted: false,
+    })
 
     const [$explict_fields, set$explict_fields] = useState(() =>
         Object.assign({}, explicitCheck)
@@ -19,6 +22,8 @@ export const useValidator = ({
     const set$explict_field = (field, value) => {
         set$explict_fields((old) => ({ ...old, [field]: value }))
     }
+
+    const { $dirty, $validated } = $meta
 
     const $data_state = useMemo(() => {
         const states = {}
@@ -142,6 +147,7 @@ export const useValidator = ({
             $invalid,
             $auto_invalid,
             $validation_success,
+            $validated,
         }),
         [
             $data,
@@ -155,12 +161,24 @@ export const useValidator = ({
             $invalid,
             $auto_invalid,
             $validation_success,
+            $validated,
         ]
     )
 
     const validate = () => {
-        set$dirty(true)
+        set$meta({
+            $dirty: true,
+            $validated: true,
+        })
     }
+
+    // Resets validated state when data is updated
+    useEffect(() => {
+        set$meta((old) => ({
+            ...old,
+            $validated: false,
+        }))
+    }, [$data])
 
     return {
         state,

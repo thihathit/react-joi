@@ -43,7 +43,7 @@ function App() {
             email: false,
         },
         validationOptions: {
-            abortEarly: true
+            abortEarly: true,
         },
     })
 
@@ -124,7 +124,7 @@ in the second example.
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `$data`               | Values of the instance                                                                                                                                 |
 | `$dirty`              | Dirty state of the instance                                                                                                                            |
-| `$explicitfields`     | Settings of any fields that have been explicitly set                                                                                                   |
+| `$explicit_fields`    | Settings of any fields that have been explicitly set                                                                                                   |
 | `$data_state`         | State of the values:`$dirty` means if the initial data is touched or not                                                                               |
 | `$source_errors`      | Raw errors of the instance. This re-validates every time `$data` is changed regardless of `$dirty` is `true` or `false`                                |
 | `$errors`             | `Recommended` way of retrieving errors of each fields. Each fields respects global `$dirty` state of the instance and `$data_state`'s `$dirty` states. |
@@ -133,6 +133,7 @@ in the second example.
 | `$invalid`            | Validity of the instance respecting global `$dirty`.                                                                                                   |
 | `$auto_invalid`       | Validity of the instance not respecting global `$dirty`. `Recommended` use case for disabled submit button                                             |
 | `$validation_success` | Positive validity of the instance respecting global `$dirty`.                                                                                          |
+| `$validated`          | `true` when `validate()` function has been called. Resets to `false` whenever `$data` is changed.                                                      |
 
 ### Combo with [react-use-models](https://www.npmjs.com/package/react-use-models).
 
