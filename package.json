@@ -10,7 +10,7 @@
     "joi": "^17.4.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-joi": "^1.0.0",
+    "react-joi": "^1.2.0",
     "react-use-models": "^1.0.0"
   },
   "devDependencies": {
