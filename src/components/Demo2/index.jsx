@@ -12,7 +12,7 @@ export const Demo2 = () => {
         },
     })
 
-    const { state, setData, validate } = useValidator({
+    const { state, setData, validate,reset } = useValidator({
         initialData: models,
         schema: Joi.object({
             name: Joi.string().required(),
@@ -49,6 +49,7 @@ export const Demo2 = () => {
             <br />
 
             <button onClick={validate}>Submit</button>
+            <button onClick={reset}>Reset</button>
 
             <code>
                 <h2>Models</h2>
@@ -61,6 +62,8 @@ export const Demo2 = () => {
                 <h2>Validation</h2>
                 <pre>{JSON.stringify(state, null, 2)}</pre>
             </code>
+
+
         </section>
     )
 }

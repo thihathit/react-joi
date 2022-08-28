@@ -4,7 +4,7 @@ import Joi from "joi"
 import useValidator from "react-joi"
 
 export const Demo1 = () => {
-    const { state, setData, setExplicitField, validate } = useValidator({
+    const { state, setData, setExplicitField, validate,reset } = useValidator({
         initialData: {
             name: null,
             email: null,
@@ -74,6 +74,7 @@ export const Demo1 = () => {
                 <br />
 
                 <button onClick={validate}>Submit</button>
+                <button onClick={reset}>Reset</button>
             </div>
 
             <br />
