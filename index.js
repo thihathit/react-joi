@@ -2,22 +2,17 @@ import Joi from "joi"
 
 import { useEffect, useMemo, useState } from "react"
 
+const initialMeta = { $dirty: false, $validated: false }
+
 export const useValidator = ({
     initialData,
     schema,
     explicitCheck = {},
     validationOptions = {},
 }) => {
-    const [$data, set$data] = useState(() => Object.assign({}, initialData))
-
-    const [$meta, set$meta] = useState({
-        $dirty: false,
-        $submitted: false,
-    })
-
-    const [$explict_fields, set$explict_fields] = useState(() =>
-        Object.assign({}, explicitCheck)
-    )
+    const [$data, set$data] = useState({ ...initialData })
+    const [$meta, set$meta] = useState({ ...initialMeta })
+    const [$explict_fields, set$explict_fields] = useState({ ...explicitCheck })
 
     const set$explict_field = (field, value) => {
         set$explict_fields((old) => ({ ...old, [field]: value }))
@@ -172,6 +167,22 @@ export const useValidator = ({
         })
     }
 
+    // Reset everything
+    const reset = () => {
+        set$meta((old) => ({
+            ...old,
+            ...initialMeta,
+        }))
+        set$data((old) => ({
+            ...old,
+            ...initialData,
+        }))
+        set$explict_fields((old) => ({
+            ...old,
+            ...explicitCheck,
+        }))
+    }
+
     // Resets validated state when data is updated
     useEffect(() => {
         set$meta((old) => ({
@@ -185,6 +196,7 @@ export const useValidator = ({
         setData: set$data,
         setExplicitField: set$explict_field,
         validate,
+        reset,
     }
 }
 
