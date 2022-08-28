@@ -118,7 +118,9 @@ Note that the **explicitCheck** object is **optional**, and is only needed if it
 input until the onBlur method has fired at least once. If this behavior is not required/desired, then omit it as shown
 in the second example.
 
-## State Documentation
+## Documentation
+
+### State
 
 | name                  | description                                                                                                                                            |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -134,6 +136,15 @@ in the second example.
 | `$auto_invalid`       | Validity of the instance not respecting global `$dirty`. `Recommended` use case for disabled submit button                                             |
 | `$validation_success` | Positive validity of the instance respecting global `$dirty`.                                                                                          |
 | `$validated`          | `true` when `validate()` function has been called. Resets to `false` whenever `$data` is changed.                                                      |
+
+### Functions
+
+| name               | description                                                         |
+| ------------------ | ------------------------------------------------------------------- |
+| `setData`          | Setting data/values, same as `useState`'s second argument function. |
+| `setExplicitField` | Modify error suppression. `setExplicitField('field_name', boolean)` |
+| `validate`         | Validate the data manually                                          |
+| `reset`            | Resets all data/state to initial. Also reset errors.                |
 
 ### Combo with [react-use-models](https://www.npmjs.com/package/react-use-models).
 
