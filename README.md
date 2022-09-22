@@ -120,6 +120,8 @@ in the second example.
 
 ## Documentation
 
+Type Doc: https://paka.dev/npm/react-joi/api
+
 ### State
 
 | name                  | description                                                                                                                                            |
