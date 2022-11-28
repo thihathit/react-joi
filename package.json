@@ -31,7 +31,7 @@
     },
     "homepage": "https://github.com/thihathit/react-joi#readme",
     "peerDependencies": {
-        "joi": "^17.3.0",
-        "react": "^17.0.1"
+        "joi": ">=17",
+        "react": ">=17"
     }
 }
